@@ -1,0 +1,51 @@
+.header {
+    background-color: #FFFAE3;
+}
+
+:root {
+    --dark-text: #191720;
+    --white-text: #fff;
+    --purple-primary: #572AF8;
+}
+
+.container {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+.header__inner {
+    display: flex;
+    padding: 17px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__menu {
+    display: flex;
+    gap: 38px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.header__menu-link {
+    color: var(--dark-text);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.8rem;
+}
+
+.header__action {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn__signIn {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 28px
+}
+
+

@@ -1,0 +1,16 @@
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 107px;
+    height: 44px;
+    background-color: var(--purple-primary);
+    border-radius: 4px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    color: var(--white-text);
+    cursor: pointer;
+}
+
