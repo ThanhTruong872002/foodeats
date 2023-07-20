@@ -9,6 +9,7 @@ const { connectDB } = require('./configs/db')
 const notFoundMiddleware = require('./middleware/not-found')
 const errorHandlerMiddleWare = require('./middleware/error-handler')
 
+const authRouter = require('./routes/auth')
 const productsRouter = require('./routes/products')
 
 app.use(express.json())
@@ -16,6 +17,8 @@ app.use(express.json())
 app.get('/', (req, res) => {
     res.send('Chào !!!')
 })
+
+app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/products', productsRouter)
 
 app.use(notFoundMiddleware)
