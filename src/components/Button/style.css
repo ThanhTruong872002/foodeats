@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 107px;
+    min-width: 107px;
     height: 44px;
     background-color: var(--purple-primary);
     border-radius: 4px;
@@ -13,4 +13,3 @@
     color: var(--white-text);
     cursor: pointer;
 }
-
