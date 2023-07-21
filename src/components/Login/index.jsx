@@ -18,6 +18,7 @@ export default function Login() {
   });
 
   const { setStatus } = useContext(LoginContext);
+  const {setIsLogin} = useContext(LoginContext)
 
 
   const [checkAccount, setCheckAccount] = useState(true);
@@ -50,8 +51,8 @@ export default function Login() {
     } else {
       const res = await checkLogin(formData.username, formData.password);
       if(res.status === true) {
-        console.log('jihiujhiuhiiuj');
         setStatus("searchResult");
+        setIsLogin(true);
       }
       if (res.status === false) {
         setErrorMessage(res.message);

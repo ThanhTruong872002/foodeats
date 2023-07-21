@@ -14,13 +14,31 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: [true, 'Please provide product price'],
     },
-    countInStock: {
+    delivery_fee: {
         type: Number,
-        required: [true, 'Please provide product count In Stock'],
+        required: [true, 'Please provide delivery fee'],
+    },
+    time_cook: {
+        type: Number,
+        required: [true, 'Please provide time cook'],
+    },
+    type: {
+        type: String,
+        required: [true, 'Please choose type of food'],
+        enum: ['burger', 'pizza', 'sandwiches', 'wings', 'coffe-tea',
+            'indian', 'chinese', 'thai', 'american']
+    },
+    rating: {
+        type: Number,
+        default: 5.0
     },
     imageUrl: {
         type: String,
         required: [true, 'Please provide product image'],
+    },
+    createAt: {
+        type: Date,
+        default: Date.now(),
     },
 })
 

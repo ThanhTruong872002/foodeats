@@ -1,19 +1,19 @@
-import React, { useContext, useState } from "react";
 import "./style.css";
-import Login from "../Login";
-import { LoginContext } from "../../App";
 
-export default function Button({ children }) {
-  const { setStatus } = useContext(LoginContext);
+export default function Button({ children, classNameCustom, onCLick }) {
 
   const handleClickSignIn = () => {
-    setStatus("login");
+    // onCLick();
   };
   return (
     <div>
-      <a className="btn" onClick={handleClickSignIn}>
+      <button
+        type="summit"
+        className={`${classNameCustom} btn `}
+        onClick={handleClickSignIn}
+      >
         {children}
-      </a>
+      </button>
     </div>
   );
 }

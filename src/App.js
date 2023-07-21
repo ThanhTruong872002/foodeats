@@ -9,19 +9,21 @@ export const LoginContext = React.createContext();
 
 function App() {
   const [status, setStatus] = useState("home");
+  const [openSignIn, setOpenSignin] = useState(false);
+
 
   return (
-    <LoginContext.Provider value={{ setStatus }}>
+    <LoginContext.Provider value={{ setStatus,setOpenSignin, openSignIn }}>
       <>
         {status === "home" && (
           <div>
             <Header />
             <Hero />
-            <Service/>
+            <Service />
           </div>
         )}
         {status === "login" && <Login />}
-        {status === "searchResult" && <SearchResult/>}
+        {status === "searchResult" && <SearchResult />}
         {/* <SearchResult/> */}
       </>
     </LoginContext.Provider>
