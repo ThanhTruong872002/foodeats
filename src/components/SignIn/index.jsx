@@ -1,23 +1,23 @@
 import LoginFB from "../../images/Login_FB.svg";
-import LoginGG from "../../images/Login_Google.svg";
 import LoginAp from "../../images/Login_Apple.svg";
+import LoginGG from "../../images/Login_Google.svg";
 import Button from "../Button";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { LoginContext } from "../../App";
+import { useGoogleLogin } from "@react-oauth/google";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({
-    username: "",
     email: "",
     password: "",
+    firstname: "",
+    lastname: "",
   });
-  const [checkAccount, setCheckAccount] = useState(true);
-
-  const { setStatus, setOpenSignin } = useContext(LoginContext);
 
   const [errorMessage, setErrorMessage] = useState({
-    username: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
     message: "",
@@ -32,14 +32,14 @@ export default function SignIn() {
     e.preventDefault();
     setCheckAccount(!checkAccount);
     setFormData({
-      username: "",
+      email: "",
       password: "",
     });
     setErrorMessage("");
   };
 
   const isUserNameValid = (username) => {
-    return /^[a-z0-9_-]+$/i.test(username);
+    return /^([A-Za-z]+)\s([A-Za-z]+)$/i.test(username);
   };
 
   const isPasswordValid = (password) => {
@@ -48,48 +48,80 @@ export default function SignIn() {
     );
   };
 
+  const [user, setUser] = useState([]);
+  // console.log("🚀 ~ file: index.jsx:25 ~ SignIn ~ user:", user);
+  const [checkAccount, setCheckAccount] = useState(true);
+  const { setStatus, setOpenSignin, setAuthenticated, setProfile, profile } =
+    useContext(LoginContext);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    // Kiểm tra nếu có thông tin xác thực trong local storage
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    const isAuthenticated = localStorage.getItem("authenticated") === "true";
+
+    if (isAuthenticated && storedUser) {
+      setIsLoggedIn(true);
+      setCurrentUser(storedUser);
+      setToken(storedToken);
+    }
+  }, []);
+
   const handleSummit = async (e, type) => {
     e.preventDefault();
-    // type === true =>>> "signin";
     if (type) {
-      if (!isUserNameValid(formData.username)) {
-        console.log("12312312");
-        setErrorMessage((prev) => ({
-          ...prev,
-          username: "Invalid username",
-        }));
+      if (!token || !currentUser) {
+        console.log("Thiếu token hoặc user. Yêu cầu đăng nhập lại.");
         return;
       }
-      if (!isPasswordValid(formData.password)) {
-        console.log("988989890890");
-
-        setErrorMessage((prev) => ({
-          ...prev,
-          password: "Invalid password",
-        }));
-        return;
+      if (!checkAccount) {
+        if (!isUserNameValid(formData.firstname)) {
+          setErrorMessage((prev) => ({
+            ...prev,
+            firstname: "Invalid Firstname",
+          }));
+          return;
+        }
+        if (!isUserNameValid(formData.lastname)) {
+          setErrorMessage((prev) => ({
+            ...prev,
+            lastname: "Invalid Firstname",
+          }));
+          return;
+        }
+        if (!isPasswordValid(formData.password)) {
+          setErrorMessage((prev) => ({
+            ...prev,
+            password: "Invalid password",
+          }));
+          return;
+        }
       }
-      console.log(errorMessage);
-      //   if (formData.password !== formData.confirm_password) {
-      //     setErrorMessage((prev) => ({
-      //       ...prev,
-      //       confirm_password: "Password not match",
-      //     }));
-      //     return;
-      //   }
-
       try {
         const res = await axios.post(
           "http://localhost:5000/api/v1/auth/login",
           {
-            username: formData.username,
+            email: formData.email,
             password: formData.password,
           }
         );
-        console.log(res);
         if (res.status === 200) {
+          setIsLoggedIn(true);
+          setCurrentUser(res.data.user);
+          setToken(res.data.token);
+
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("authenticated", true);
+
           setStatus("searchResult");
           setOpenSignin(false);
+          setAuthenticated(true);
+          setProfile(res.data.user);
         }
         if (res.response.status !== 200) {
           console.log(res.response.data.msg);
@@ -101,12 +133,15 @@ export default function SignIn() {
         const res = await axios.post(
           "http://localhost:5000/api/v1/auth/register",
           {
-            username: formData.username,
+            firstname: formData.firstname,
+            lastname: formData.lastname,
             password: formData.password,
             email: formData.email,
           }
         );
         console.log(res);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        localStorage.setItem("authenticated", true);
       } catch (error) {
         setErrorMessage((prev) => ({
           ...prev,
@@ -116,9 +151,40 @@ export default function SignIn() {
     }
   };
 
+  // Login Google
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => setUser(codeResponse),
+    onError: (error) => console.log("Login Failed:", error),
+  });
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.access_token}`,
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          setProfile(res.data);
+          const respone = axios.post(
+            "http://localhost:5000/api/v1/auth/login/google",
+            user.access_token
+          );
+
+          localStorage.setItem("user", JSON.stringify(user.data.user));
+          localStorage.setItem("token", JSON.stringify(user.data.token));
+          localStorage.setItem("authenticated", true);
+        })
+        .catch((err) => {});
+    }
+  }, [user]);
   return (
-    <div>
-      <div className="w-[430px] h-[696px] rounded-[12px] bg-white mx-auto fixed z-50 top-[10%] left-[35%]">
+    <div className="fixed top-0 left-0 right-0 bottom-0 bg-slate-300 h-[100vh]">
+      <div className="w-[430px] h-[750px] rounded-[12px] bg-white mx-auto ">
         <div onClick={() => setOpenSignin(false)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +192,7 @@ export default function SignIn() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-10 h-10 absolute right-0 cursor-pointer"
+            className="w-10 h-10 absolute cursor-pointer "
           >
             <path
               strokeLinecap="round"
@@ -135,17 +201,20 @@ export default function SignIn() {
             />
           </svg>
         </div>
-        <h2 className="font-[600] text-[26px] text-center my-8 pt-[34px]">
+        <h2 className="font-[600] text-[26px] text-center my-8 pt-[10px]">
           {checkAccount ? "Sign In" : "Sign Up"}
         </h2>
         <div className="flex flex-col justify-center items-center gap-6 ">
+          <button
+            className="flex justify-evenly items-center w-[370px] h-[50px] rounded-[6px] border-[1px] border-black"
+            onClick={() => login()}
+          >
+            <img src={LoginGG} alt="" className="ml-[-60px]" />
+            Continue with Google{" "}
+          </button>
           <button className="flex justify-evenly items-center w-[370px] h-[50px] rounded-[6px] border-[1px] border-black">
             <img src={LoginFB} alt="" className="ml-[-50px]" />
             Continue with Facebook
-          </button>
-          <button className="flex justify-evenly items-center w-[370px] h-[50px] rounded-[6px] border-[1px] border-black">
-            <img src={LoginGG} alt="" className="ml-[-58px]" />
-            Continue with Google
           </button>
           <button className="flex  justify-evenly items-center w-[370px] h-[50px] rounded-[6px] border-[1px] border-black">
             <img src={LoginAp} alt="" className="ml-[-58px]" />
@@ -157,51 +226,69 @@ export default function SignIn() {
         </div>
         <form
           onSubmit={(e) => handleSummit(e, checkAccount)}
-          className="flex flex-col justify-center items-center gap-5"
+          className="flex flex-col justify-center items-center gap-4"
         >
-          <input
-            value={formData.username}
-            onChange={handleChangeUser}
-            className=" w-[370px] h-[60px] border-black border-[1px] rounded-[6px] pl-[15px]"
-            type="text"
-            placeholder="Username"
-            name="username"
-          />
-          <p className="error_message" style={{ color: "red" }}>
-            {errorMessage.username}
-          </p>
           {!checkAccount && (
             <>
               <input
-                value={formData.email}
+                value={formData.firstname}
                 onChange={handleChangeUser}
                 className=" w-[370px] h-[60px] border-black border-[1px] rounded-[6px] pl-[15px]"
-                type="email"
-                placeholder="Email Address"
-                name="email"
+                type="text"
+                placeholder="First name"
+                name="firstname"
               />
               <p className="error_message" style={{ color: "red" }}>
-                {errorMessage.email}
+                {errorMessage.firstname}
+              </p>
+              <input
+                value={formData.lastname}
+                onChange={handleChangeUser}
+                className=" w-[370px] h-[60px] border-black border-[1px] rounded-[6px] pl-[15px]"
+                type="text"
+                placeholder="Last name"
+                name="lastname"
+              />
+              <p className="error_message" style={{ color: "red" }}>
+                {errorMessage.lastname}
               </p>
             </>
           )}
           <input
+            value={formData.email}
+            onChange={handleChangeUser}
+            className=" w-[370px] h-[60px] border-black border-[1px] rounded-[6px] pl-[15px]"
+            type="email"
+            placeholder="Email Address"
+            name="email"
+          />
+          <p className="error_message" style={{ color: "red" }}>
+            {errorMessage.email}
+          </p>
+          <input
             value={formData.password}
             onChange={handleChangeUser}
-            className=" w-[370px] h-[60px] border-black border-[1px] rounded-[6px] pl-[15px] mb-[30px]"
+            className=" w-[370px] h-[60px] border-black border-[1px] rounded-[6px] pl-[15px] mb-[10px]"
             type="password"
             placeholder="Password"
             name="password"
           />
-          <p className="error_message" style={{ color: "red", fontSize: "14px" ,width:"370px",display:"block",textAlign:"center"}}>
-
+          <p
+            className="error_message"
+            style={{
+              color: "red",
+              fontSize: "14px",
+              width: "370px",
+              display: "block",
+              textAlign: "center",
+            }}
+          >
             {errorMessage.password || errorMessage.message}
           </p>
 
           <Button classNameCustom="w-[370px]">
             {checkAccount ? "Sign In" : "Sign Up"}
           </Button>
-
           <span className="mt-[10px] text-[18px]">
             {!checkAccount ? " Don’t a have account?" : "Have an  account?"}
             <span className="font-bold ml-[10px]">

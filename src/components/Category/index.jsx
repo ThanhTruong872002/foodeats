@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Burgur from "../../images/burger.svg";
 import Pizza from "../../images/pizza.svg";
 import Wings from "../../images/Wings.svg";
@@ -10,8 +10,15 @@ import VectorRight from "../../images/Arrow-right.svg";
 import VectorDown from "../../images/VectorDown.svg";
 import Cards from "../Cards";
 import PageNumber from "../PageNumber";
+import { LoginContext } from "../../App";
 
 export default function Category() {
+  const { setStatus } = useContext(LoginContext);
+
+  const handleStoreDetails = () => {
+    setStatus("RestaurantDetails");
+  };
+
   return (
     <div className="category w-[75%]">
       <div className="flex justify-between items-center">
@@ -25,7 +32,10 @@ export default function Category() {
           View All
         </a>
       </div>
-      <div className="flex gap-[30px] items-center mt-[30px]">
+      <div
+        className="flex gap-[30px] items-center mt-[30px]"
+        onClick={handleStoreDetails}
+      >
         <div className="text-center">
           <img src={Burgur} alt="" />
           <p className="mt-[6px] text-[1.6rem] font-[600] text-[#191720] w-[64px]">

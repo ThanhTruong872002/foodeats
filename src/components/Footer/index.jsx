@@ -8,7 +8,7 @@ import Instagram from "../../images/Instagram-icon.svg";
 export default function Footer() {
   return (
     <>
-      <div className="bg-[#FFFAE3] mt-[160px] pt-[100px]">
+      <div className="bg-[#FFFAE3] pt-[100px]">
         <div className=" flex gap-[213px] justify-center">
           <div>
             <img src={Logo} alt="" />
