@@ -36,6 +36,10 @@ const productSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please provide product image'],
     },
+    view: {
+        type: Number,
+        default: 0
+    },
     createAt: {
         type: Date,
         default: Date.now(),
