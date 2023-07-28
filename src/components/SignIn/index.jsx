@@ -126,7 +126,7 @@ export default function SignIn() {
         if (res.response.status !== 200) {
           console.log(res.response.data.msg);
         }
-      } catch (error) {}
+      } catch (error) { }
     }
     if (!type) {
       try {
@@ -158,6 +158,7 @@ export default function SignIn() {
   });
   useEffect(() => {
     if (user) {
+      console.log(user)
       axios
         .get(
           `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
@@ -179,7 +180,7 @@ export default function SignIn() {
           localStorage.setItem("token", JSON.stringify(user.data.token));
           localStorage.setItem("authenticated", true);
         })
-        .catch((err) => {});
+        .catch((err) => { });
     }
   }, [user]);
   return (

@@ -1,17 +1,21 @@
 
 require('dotenv').config()
 
-const productData = require('./data/products')
 const { connectDB } = require('./configs/db')
+const productData = require('./data/products')
+const restaurantData = require('./data/restaurant')
 const Product = require('./models/Product')
+const Restaurant = require('./models/Restaurant')
 
 const importData = async () => {
     try {
         await connectDB(process.env.MONGO_URI)
         await Product.deleteMany({})
         await Product.insertMany(productData)
+
+        await Restaurant.deleteMany({})
+        await Restaurant.insertMany(restaurantData)
         console.log('Data Import Success')
-        process.exit()
     }
     catch (err) {
         console.log('Import Fail')
@@ -19,4 +23,4 @@ const importData = async () => {
     }
 }
 
-importData()
+module.exports = importData

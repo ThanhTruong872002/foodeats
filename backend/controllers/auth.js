@@ -52,6 +52,7 @@ const login = async (req, res) => {
 
 const registerGoogle = async (req, res, next) => {
     const dataUser = req.user
+    console.log(dataUser)
     if (!dataUser) {
         throw new UnauthenticatedError('Get information user fail')
     }
@@ -80,6 +81,7 @@ const registerGoogle = async (req, res, next) => {
 
 const loginGoogle = async (req, res, next) => {
     const dataUser = req.user
+    console.log('dataUser', dataUser)
     if (!dataUser) {
         throw new UnauthenticatedError('Get information user fail')
     }
