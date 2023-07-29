@@ -11,12 +11,15 @@ import VectorDown from "../../images/VectorDown.svg";
 import Cards from "../Cards";
 import PageNumber from "../PageNumber";
 import { LoginContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 export default function Category() {
   const { setStatus } = useContext(LoginContext);
 
+  const navigate = useNavigate();
+
   const handleStoreDetails = () => {
-    setStatus("RestaurantDetails");
+    navigate("/restaurantDetails");
   };
 
   return (
