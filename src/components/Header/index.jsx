@@ -4,17 +4,18 @@ import "./style.css";
 import Button from "../Button";
 import { LoginContext } from "../../App";
 import SignIn from "../SignIn";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const { setStatus, openSignIn, setOpenSignin, authenticated, profile } =
     useContext(LoginContext);
-
+  const navigate = useNavigate();
   const handleClick = () => {
-    setOpenSignin(true);
+    navigate("/login");
   };
 
   const handleBackHome = () => {
-    setStatus("home");
+    navigate("/");
   };
   return (
     <div>

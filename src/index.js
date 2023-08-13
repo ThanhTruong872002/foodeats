@@ -4,12 +4,15 @@ import "./App.css";
 import "./index.css";
 import App from "./App";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <GoogleOAuthProvider clientId="581436715352-oil3k1815043kfopsutb3cd561atj26m.apps.googleusercontent.com">
     <React.StrictMode>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </React.StrictMode>
   </GoogleOAuthProvider>
 );

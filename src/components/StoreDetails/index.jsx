@@ -2,15 +2,20 @@ import React from 'react'
 import HeroImg from "../../images/Restaurant_Details_Img.svg";
 import HeroImgSub from "../../images/Restaurant_Details_Img2.svg";
 import Star from "../../images/Star -icon.svg";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function StoreDetails() {
   return (
     <div className="container">
       <div>
         <div className="flex justify-center items-center flex-col relative">
-          <img src={HeroImg} alt="" />
-          <img src={HeroImgSub} alt="" className="absolute top-96 z-40" />
+          <LazyLoadImage src={HeroImg} alt="" />
+          <LazyLoadImage
+            src={HeroImgSub}
+            alt=""
+            className="absolute top-96 z-40"
+          />
         </div>
       </div>
       <div className="flex justify-between mt-[103px]">

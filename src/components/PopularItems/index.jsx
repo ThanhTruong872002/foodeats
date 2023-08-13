@@ -14,6 +14,8 @@ import Item12 from "../../images/Popular-Items12.svg";
 import Map from "../../images/Map.svg";
 import Phone from "../../images/Phone.svg";
 import Mail from "../../images/Mail.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function PopularItems() {
   return (
@@ -24,7 +26,7 @@ export default function PopularItems() {
         </h2>
         <div className="flex gap-[60px]">
           <div>
-            <img src={Item1} alt="" />
+            <LazyLoadImage src={Item1} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">
               Eggs Benedict Burger
             </h2>
@@ -34,11 +36,11 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
           <div>
-            <img src={Item2} alt="" />
+            <LazyLoadImage src={Item2} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">
               Eggs Benedict Burger
             </h2>
@@ -48,11 +50,11 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
           <div>
-            <img src={Item3} alt="" />
+            <LazyLoadImage src={Item3} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">
               Eggs Benedict Burger
             </h2>
@@ -62,11 +64,11 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
           <div>
-            <img src={Item4} alt="" />
+            <LazyLoadImage src={Item4} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">
               Eggs Benedict Burger
             </h2>
@@ -76,7 +78,7 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
         </div>
@@ -88,7 +90,7 @@ export default function PopularItems() {
         </h2>
         <div className="flex gap-[60px]">
           <div>
-            <img src={Item5} alt="" />
+            <LazyLoadImage src={Item5} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">
               Eggs Benedict Burger
             </h2>
@@ -98,11 +100,11 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
           <div>
-            <img src={Item6} alt="" />
+            <LazyLoadImage src={Item6} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">
               Eggs Benedict Burger
             </h2>
@@ -112,11 +114,11 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
           <div>
-            <img src={Item7} alt="" />
+            <LazyLoadImage src={Item7} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">
               Eggs Benedict Burger
             </h2>
@@ -126,11 +128,11 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
           <div>
-            <img src={Item8} alt="" />
+            <LazyLoadImage src={Item8} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">
               Eggs Benedict Burger
             </h2>
@@ -140,7 +142,7 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
         </div>
@@ -152,7 +154,7 @@ export default function PopularItems() {
         </h2>
         <div className="flex gap-[60px]">
           <div>
-            <img src={Item9} alt="" />
+            <LazyLoadImage src={Item9} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">Chicken Burger</h2>
             <p className="text-[1.4rem] text-grey mb-[12px] w-[246px]">
               Ground beef, hollandaise sauce mix, stone ground mustard, with a
@@ -160,11 +162,11 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
           <div>
-            <img src={Item10} alt="" />
+            <LazyLoadImage src={Item10} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">Chicken Burger</h2>
             <p className="text-[1.4rem] text-grey mb-[12px] w-[246px]">
               Ground beef, hollandaise sauce mix, stone ground mustard, with a
@@ -172,11 +174,11 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
           <div>
-            <img src={Item11} alt="" />
+            <LazyLoadImage src={Item11} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">Chicken Burger</h2>
             <p className="text-[1.4rem] text-grey mb-[12px] w-[246px]">
               Ground beef, hollandaise sauce mix, stone ground mustard, with a
@@ -184,11 +186,11 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
           <div>
-            <img src={Item12} alt="" />
+            <LazyLoadImage src={Item12} alt="" />
             <h2 className="my-[12px] text-[2rem] font-bold">Chicken Burger</h2>
             <p className="text-[1.4rem] text-grey mb-[12px] w-[246px]">
               Ground beef, hollandaise sauce mix, stone ground mustard, with a
@@ -196,7 +198,7 @@ export default function PopularItems() {
             </p>
             <div className="flex justify-between w-[246px] items-center">
               <p>$7.50</p>
-              <img src={IconCart} alt="" />
+              <LazyLoadImage src={IconCart} alt="" />
             </div>
           </div>
         </div>
@@ -205,18 +207,18 @@ export default function PopularItems() {
         <h2 className="text-[26px] font-[600] mb-[30px]">
           About The Burger Cafe
         </h2>
-        <img src={Map} alt="" />
+        <LazyLoadImage src={Map} alt="" />
       </div>
       <div className="flex justify-center items-center gap-[20px] mt-[31px]">
         <div className="flex gap-[10px]">
-          <img src={Phone} alt="" />
+          <LazyLoadImage src={Phone} alt="" />
           <div>
             <p>Phone</p>
             <p>(000) 120 768 9988</p>
           </div>
         </div>
         <div className="flex gap-[10px] ">
-          <img src={Mail} alt="" />
+          <LazyLoadImage src={Mail} alt="" />
           <div>
             <p>Mail</p>
             <p>truongtecu872002@gmail.com</p>

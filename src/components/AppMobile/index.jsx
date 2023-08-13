@@ -1,6 +1,8 @@
 import React from "react";
 import DecorApp from "../../images/App-decor.svg";
 import MobileImg from "../../images/MobileApp-img.svg"
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function AppMobile() {
   return (
@@ -14,8 +16,16 @@ export default function AppMobile() {
             Download the Just Eat app for faster ordering and more personalised
             recommendations.
           </p>
-          <img src={DecorApp} alt="" className="absolute top-[50%] z-30" />
-          <img src={MobileImg} alt="" className="absolute top-[120%] z-40" />
+          <LazyLoadImage
+            src={DecorApp}
+            alt=""
+            className="absolute top-[50%] z-30"
+          />
+          <LazyLoadImage
+            src={MobileImg}
+            alt=""
+            className="absolute top-[120%] z-40"
+          />
         </div>
       </div>
     </div>

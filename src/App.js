@@ -1,15 +1,7 @@
-import React, { useState } from "react";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Service from "./components/Service";
-import SearchResult from "./components/SearchResult";
-import RestaurantDetails from "./components/RestaurantDetails";
-import About from "./components/About";
-import Features from "./components/Features";
-import AppMobile from "./components/AppMobile";
-import Testimonial from "./components/Testimonial";
-import Newsletter from "./components/Newsletter";
-import Footer from "./components/Footer";
+import React, { useEffect, useState } from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import useRouterElement from "./routes/useRouterElement";
+import { BrowserRouter } from "react-router-dom";
 
 export const LoginContext = React.createContext();
 
@@ -18,7 +10,28 @@ function App() {
   const [openSignIn, setOpenSignin] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [profile, setProfile] = useState({});
+  console.log(authenticated);
 
+
+  const routerElement = useRouterElement();
+  const navigate = useNavigate();
+
+  
+  const getDatafromLS = () => {
+    const token = localStorage.getItem("token");
+    const user_info = localStorage.getItem("user");
+
+    if (user_info) {
+      setAuthenticated(true);
+      setProfile(JSON.parse(user_info));
+    }
+  };
+  useEffect(() => {
+    getDatafromLS();
+    if (profile) {
+      navigate("/searchResult");
+    }
+  }, []);
   return (
     <LoginContext.Provider
       value={{
@@ -31,25 +44,9 @@ function App() {
         setProfile,
       }}
     >
-      <>
-        {status === "home" && (
-          <>
-            <div className={`${openSignIn && "h-[100vh] overflow-hidden"} `}>
-              <Header />
-              <Hero />
-              <Service />
-              <About />
-              <Features />
-              <AppMobile />
-              <Testimonial />
-              <Newsletter />
-              <Footer />
-            </div>
-          </>
-        )}
-        {status === "searchResult" && <SearchResult />}
-        {status === "RestaurantDetails" && <RestaurantDetails />}
-      </>
+      {/* <div className={`${openSignIn && "h-[100vh] overflow-hidden"} `}> */}
+      {routerElement}
+      {/* </div> */}
     </LoginContext.Provider>
   );
 }

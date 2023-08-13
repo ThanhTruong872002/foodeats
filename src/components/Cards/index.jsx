@@ -11,13 +11,9 @@ import Item9 from "../../images/Cards-img9.svg";
 import Item10 from "../../images/Cards-img10.svg";
 import Item11 from "../../images/Cards-img11.svg";
 import Item12 from "../../images/Cards-img12.svg";
-// import Item13 from "../../images/Cards-img13.svg";
-// import Item14 from "../../images/Cards-img14.svg";
-// import Item15 from "../../images/Cards-img15.svg";
-// import Item16 from "../../images/Cards-img16.svg";
-// import Item17 from "../../images/Cards-img17.svg";
-// import Item18 from "../../images/Cards-img18.svg";
 import Star from "../../images/Star -icon.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function Cards() {
   return (
@@ -25,7 +21,7 @@ export default function Cards() {
       <div className="grid grid-cols-3 grip gap-x-[30px] gap-y-[42px] ">
         {/* Item 1 */}
         <div>
-          <img src={Item1} alt="" />
+          <LazyLoadImage src={Item1} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             The Burger Cafe
           </h2>
@@ -42,13 +38,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 2  */}
         <div>
-          <img src={Item2} alt="" />
+          <LazyLoadImage src={Item2} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             The Pizza Hut
           </h2>
@@ -65,13 +61,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 3  */}
         <div>
-          <img src={Item3} alt="" />
+          <LazyLoadImage src={Item3} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             Caprese Sandwich Hub
           </h2>
@@ -88,13 +84,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 4  */}
         <div>
-          <img src={Item4} alt="" />
+          <LazyLoadImage src={Item4} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             The Wings Cafe
           </h2>
@@ -111,13 +107,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 5  */}
         <div>
-          <img src={Item5} alt="" />
+          <LazyLoadImage src={Item5} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             The Coffee Express
           </h2>
@@ -136,13 +132,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 6  */}
         <div>
-          <img src={Item6} alt="" />
+          <LazyLoadImage src={Item6} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             The Biryani House
           </h2>
@@ -159,13 +155,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 7  */}
         <div>
-          <img src={Item7} alt="" />
+          <LazyLoadImage src={Item7} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             Fast Food Hub
           </h2>
@@ -182,13 +178,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 8  */}
         <div>
-          <img src={Item8} alt="" />
+          <LazyLoadImage src={Item8} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             Fast Food Cafe
           </h2>
@@ -205,13 +201,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 9  */}
         <div>
-          <img src={Item9} alt="" />
+          <LazyLoadImage src={Item9} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             Fried Chicken Hub
           </h2>
@@ -228,13 +224,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 10  */}
         <div>
-          <img src={Item10} alt="" />
+          <LazyLoadImage src={Item10} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             The Steak Cafe
           </h2>
@@ -251,13 +247,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 11  */}
         <div>
-          <img src={Item11} alt="" />
+          <LazyLoadImage src={Item11} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             The Pizza King
           </h2>
@@ -274,13 +270,13 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
         {/* Item 12 */}
         <div>
-          <img src={Item12} alt="" />
+          <LazyLoadImage src={Item12} alt="" />
           <h2 className="font-bold text-[2rem] mt-[12px] mb-2">
             The French Fries
           </h2>
@@ -297,7 +293,7 @@ export default function Cards() {
           </p>
           <div className="flex gap-[6px]">
             <p className="text-[14px] text-[#575363] font-normal">4.6</p>
-            <img src={Star} alt="" />
+            <LazyLoadImage src={Star} alt="" />
             <p className="text-[14px] text-[#575363] font-normal">(2,200)</p>
           </div>
         </div>
