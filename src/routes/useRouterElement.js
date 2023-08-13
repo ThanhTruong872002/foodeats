@@ -8,8 +8,6 @@ import AppMobile from "../components/AppMobile";
 import Testimonial from "../components/Testimonial";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
-import { useContext } from "react";
-import { LoginContext } from "../App";
 import ProtectedRouter from ".";
 import SignIn from "../components/SignIn";
 import SearchResult from "../components/SearchResult";

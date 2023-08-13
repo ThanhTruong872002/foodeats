@@ -11,8 +11,12 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [profile, setProfile] = useState({});
   console.log(authenticated);
+
+
   const routerElement = useRouterElement();
   const navigate = useNavigate();
+
+  
   const getDatafromLS = () => {
     const token = localStorage.getItem("token");
     const user_info = localStorage.getItem("user");

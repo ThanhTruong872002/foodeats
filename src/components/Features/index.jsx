@@ -2,7 +2,8 @@ import Button from "../Button";
 import FeatureImg1 from "../../images/Feature-img1.svg";
 import FeatureImg2 from "../../images/Feature-img2.svg";
 import FeatureImg3 from "../../images/Feature-img3.svg";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 export default function Features() {
   return (
     <div className="my-[160px]">
@@ -18,7 +19,7 @@ export default function Features() {
         </div>
         <div className="grid grid-cols-2 gap-[30px]">
           <div className="flex flex-col justify-center items-center ">
-            <img src={FeatureImg1} alt="" />
+            <LazyLoadImage src={FeatureImg1} alt="" />
             <h2 className="font-bold text-[30px] mt-[38px] mb-[18px]">
               Deliver With Us
             </h2>
@@ -29,7 +30,7 @@ export default function Features() {
             <Button>Learn More</Button>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <img src={FeatureImg2} alt="" />
+            <LazyLoadImage src={FeatureImg2} alt="" />
             <h2 className="font-bold text-[30px] mt-[38px] mb-[18px] ">
               Deliver With Us
             </h2>
@@ -58,7 +59,7 @@ export default function Features() {
           </div>
 
           <div className="mt-[160px]">
-            <img src={FeatureImg3} alt="" />
+            <LazyLoadImage src={FeatureImg3} alt="" />
           </div>
         </div>
       </div>

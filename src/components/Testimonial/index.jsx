@@ -2,12 +2,18 @@ import React from "react";
 import DownloadApp from "../../images/Dowload-App.svg";
 import Star from "../../images/Star -icon.svg";
 import Union from "../../images/Union.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function Testimonial() {
   return (
     <div className="bg-[#FFFAE3] pt-[430px] pb-[160px]">
       <div className="container">
-        <img src={DownloadApp} alt="" className="block mx-auto mb-[160px]" />
+        <LazyLoadImage
+          src={DownloadApp}
+          alt=""
+          className="block mx-auto mb-[160px]"
+        />
         <div>
           <h2 className="w-[470px] font-sans text-[4.4rem] mb-[70px]">
             What food lovers are saying about us
